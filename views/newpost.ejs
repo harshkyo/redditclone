@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="css/newpost.css" />
+<%- include("layouts/header", {page : "search"}) %>
+<div id="post-window">
+  <form action="/" method="post" enctype="multipart/form-data">
+    <div id="main-content">
+      <label for="textbox">Text: </label>
+      <input type="textbox" placeholder="Enter text here" />
+    </div>
+    <div id="drop-region">
+      <div class="drop-message">Drag & Drop images or click to upload</div>
+      <div id="image-preview"></div>
+    </div>
+    <div id="upload-content">
+      <a href="#" id="post-content">Post</a>
+      <a href="#" id="cancel-post">Cancel</a>
+    </div>
+  </form>
+</div>
+<script src="js/imageupload.js"></script>

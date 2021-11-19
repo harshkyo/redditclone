@@ -1,31 +1,31 @@
-<link rel="stylesheet" href="/css/login.css" />
-<%- include("layouts/loginheader") %> 
-<div id="login-box">
-  <form action="index" method="post">
-    <div id="form-body">
-      <h2>login:</h2>
-      <div id="username">
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Username"
-          required
-        />
-      </div>
-      <div id="password">
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-          required
-        />
-      </div>
-      <div id="submit-btn">
-        <input type="submit" value="Login" id="login" />
-      </div>
-      <a href="/signup">Don't have an account? Signup</a>
+    <link rel="stylesheet" href="/css/login.css" />
+    <%- include("layouts/header", { page: "login" }) %>
+    <div id="login-box">
+      <form action="auth/login" method="post">
+        <div id="form-body">
+          <h2>login:</h2>
+          <div id="username">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div id="password">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div id="submit-btn">
+            <input type="submit" value="Login" id="login" />
+          </div>
+          <a href="/signup">Don't have an account? Signup</a>
+        </div>
+      </form>
     </div>
-  </form>
-</div>

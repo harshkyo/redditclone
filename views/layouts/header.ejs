@@ -4,16 +4,22 @@
     <div id="icon">
       <a href="/">
         <img src="/img/icon.png" alt="logo" />
-        <h2>reddit</h2>
+        <h2>riddit</h2>
       </a>
     </div>
-
-    <a href="Signup" class="link">Signup</a>
-    <a href="Login" class="link">Login</a>
-    <a href="about" class="link">About</a>
-    <a href="/" class="link">Home</a>
-    <div id="search">
+    <% if(page != "loggedin") { %> 
+    <% if(page != "signup") { %>  <a href="Signup" class="link">Signup</a><% } %>
+    <% if(page != "login") { %> <a href="Login" class="link">Login</a><% } %>
+    <% if(page != "about") { %> <a href="about" class="link">About</a><% } %>
+    <% if(page != "home") { %> <a href="/" class="link">Home</a><% } %>
+    <% if(page === "home") { %> <div id="search">
       <input type="text" name="search" placeholder="search" onchange="search" />
-    </div>
+    </div><% } } else { %>
+    <a href="logout" class="link"><%= page %> </a>
+    <% if(page != "about") { %> <a href="about" class="link">About</a><% } %>
+    <% if(page != "home") { %> <a href="/" class="link">Home</a><% } %>
+    <% if(page === "home") { %> <div id="search">
+      <input type="text" name="search" placeholder="search" onchange="search" />
+    </div><% } } %>
   </div>
 </div>

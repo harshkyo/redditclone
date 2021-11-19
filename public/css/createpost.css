@@ -1,0 +1,29 @@
+#create-post {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: rgb(139, 139, 139);
+  background-color: rgb(66, 66, 66);
+  margin-bottom: 10px;
+
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  /* background-color: rgb(24, 24, 24); */
+  /* padding: 10px; */
+  font-weight: 700;
+}
+
+/* #create-post a {
+} */
+
+#create-post:hover {
+  background-color: rgb(87, 87, 87);
+}
