@@ -1,7 +1,7 @@
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
     <%- include("layouts/header", { page: "signup" }) %>
     <div id="login-box">
-      <form action="auth/signup" method="post">
+      <form action="/user/signup" method="post">
         <div id="form-body">
           <h2>Signup:</h2>
           <div id="username">
@@ -11,9 +11,6 @@
               placeholder="Username"
               required
             />
-          </div>
-          <div id="email">
-            <input type="email" name="email" placeholder="Email" required />
           </div>
           <div id="password">
             <input
@@ -26,7 +23,7 @@
           <div id="submit-btn">
             <input type="submit" value="Signup" id="Signup" />
           </div>
-          <a href="/login">Already have an account? login</a>
+          <a href="login">Already have an account? login</a>
         </div>
       </form>
     </div>

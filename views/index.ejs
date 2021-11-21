@@ -8,13 +8,15 @@
     <link href="/css/index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <%- include("layouts/header", { page: page }) %>
+    <%- include("layouts/header", { page, currentUser }) %>
     <div id="main">
       <div id="cards-container">
-        <div><%- include("layouts/card") %></div>
+        <% posts.forEach(post => { %>
+        <div><%- include("layouts/card", { post }) %></div>
+        <% }) %>
       </div>
       <div id="footer-container">
-        <%- include("layouts/createpost") %> <%- include("layouts/footer") %>
+       <% if(currentUser) {%>  <%- include("layouts/createpost") %> <% } %>  <%- include("layouts/footer") %>
       </div>
     </div>
   </body>

@@ -1,12 +1,9 @@
-var // where files are dropped + file selector is opened
-  dropRegion = document.getElementById("drop-region"),
-  // where images are previewed
-  imagePreviewRegion = document.getElementById("image-preview");
+var dropRegion = document.getElementById("drop-region");
+var imagePreviewRegion = document.getElementById("image-preview");
 
-// open file selector when clicked on the drop region
 var fakeInput = document.createElement("input");
 fakeInput.type = "file";
-fakeInput.accept = "image/*";
+fakeInput.accept = "image";
 fakeInput.multiple = false;
 dropRegion.addEventListener("click", function () {
   fakeInput.click();
@@ -34,41 +31,7 @@ function handleDrop(e) {
 
   if (files.length) {
     handleFiles(files);
-  } else {
-    // check for img
-    var html = dt.getData("text/html"),
-      match = html && /\bsrc="?([^"\s]+)"?\s*/.exec(html),
-      url = match && match[1];
-
-    if (url) {
-      uploadImageFromURL(url);
-      return;
-    }
-  }
-
-//   function uploadImageFromURL(url) {
-//     dropRegion.style.padding = "0px";
-//     var img = new Image();
-//     var c = document.createElement("canvas");
-//     var ctx = c.getContext("2d");
-
-//     img.onload = function () {
-//       c.width = this.naturalWidth; // update canvas size to match image
-//       c.height = this.naturalHeight;
-//       ctx.drawImage(this, 0, 0); // draw in image
-//       c.toBlob(function (blob) {
-//         // get content as PNG blob
-
-//         // call our main function
-//         handleFiles([blob]);
-//       }, "image/png");
-//     };
-//     img.onerror = function () {
-//       alert("Error in uploading");
-//     };
-//     img.crossOrigin = ""; // if from different origin
-//     img.src = url;
-//   }
+  } 
 }
 
 dropRegion.addEventListener("drop", handleDrop, false);
@@ -80,7 +43,6 @@ function handleFiles(files) {
 }
 
 function validateImage(image) {
-  // check the type
   var validTypes = ["image/jpeg", "image/png", "image/gif"];
   if (validTypes.indexOf(image.type) === -1) {
     alert("Invalid File Type");
