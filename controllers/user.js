@@ -28,7 +28,8 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
   const user = new User(req.body);
   sess = req.session;
-  sess.userid = req.body.username;
+  sess.userid = user._id;
+  sess.user = user.username;
   user
     .save()
     .then((user) => {
@@ -53,7 +54,7 @@ router.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  User.findOne({ username }, "username password")
+  User.findOne({ username }, "_id username password")
     .then((user) => {
       if (!user) {
 
@@ -67,7 +68,8 @@ router.post("/login", (req, res) => {
             .send({ message: "Wrong Username or password" });
         }
         sess = req.session;
-        sess.userid = username;
+        sess.userid = user._id;
+        sess.user = user.username;
         res.redirect("/");
       });
     })

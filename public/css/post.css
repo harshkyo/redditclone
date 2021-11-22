@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+#post-content {
+  /* padding: 30px 20px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  width: 70%;
+  margin: 30px auto;
+}
+
+#sub-post {
+  flex: 70%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+#post-box {
+    flex: 50%;
+}
+
+#make-comment form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+#make-comment form textarea {
+  flex: 80%;
+}
+
+#make-comment form textarea {
+  flex: 20%;
+}
+
+#footer-container {
+  flex: 30%;
+  margin-left: 20px;
+  height: 150px;
+  /* display: inline-block; */
+}

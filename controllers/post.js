@@ -19,6 +19,7 @@ router.use(
   })
 );
 
+var session;
 
 const Post = require("../models/post.js");
 const User = require("../models/user.js");
@@ -27,22 +28,25 @@ router.get("/new", (req, res) => {
   const currentUser = req.session.userid;
   session = req.session;
   page = "about";
-  user = "loggedin";
+  activity = "loggedin";
+  const username = session.user;
   res.render("newpost", {
       currentUser,
       page,
-      user
+      activity,
+      username,
   });
 });
 
 router.post("/new", (req, res) => {
-  const currentUser = req.user;
+  const currentUser = req.session.userid;
   if (currentUser) {
+    // console.log(req.body);
     const newPost = Post(req.body);
     newPost.author = currentUser;
     newPost
       .save()
-      .then((err, post) => User.findById(currentUser._id))
+      .then((err, post) => User.findById(currentUser))
       .then((user) => {
         user.posts.unshift(newPost);
         user.save();
@@ -58,13 +62,20 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const currentUser = req.user;
+  const currentUser = req.session.userid;
+  const username = req.session.user;
+  activity = "loggedin";
+  if(username === undefined) {
+    activity = "notloggedin";
+  }
   Post.findById(req.params.id)
     .populate("author")
     .then((post) => {
       console.log(post.comments);
       res.render("post", {
         post,
+        username,
+        activity,
         currentUser,
       });
     })

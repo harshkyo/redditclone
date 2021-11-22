@@ -25,20 +25,24 @@ var session;
 router.get("/", function (req, res, next) {
   const currentUser = req.session.userid;
   session = req.session;
+  // console.log(session);
   page = "home";
-  user = "loggedin";
+  activity = "loggedin";
   if (session.userid === undefined) {
-    user = "notloggedin";
+    activity = "notloggedin";
   }
+  const username = session.user;
 
-  Post.find({})
+  Post.find({}).sort({"_id": -1})
     .populate("author")
     .then((posts) => {
+      // console.log(posts);
       res.render("index", {
         posts,
         currentUser,
         page,
-        user, 
+        activity,
+        username, 
       });
     })
 });
@@ -47,15 +51,18 @@ router.get("/about", function (req, res) {
   const currentUser = req.session.userid;
   session = req.session;
   page = "about";
-  user = "loggedin";
+  activity = "loggedin";
 //   console.log(session);
   if (session.userid === undefined) {
-    user = "notloggedin";
+    activity = "notloggedin";
   }
+  const username = session.user;
+
   res.render("about", {
       currentUser,
       page,
-      user
+      activity,
+      username,
   })
 });
 

@@ -7,17 +7,17 @@
         <h2>riddit</h2>
       </a>
     </div>
-    <% if(user === "notloggedin") { %> 
-    <% if(page === "home" || page === "about") { %>  <a href="user/signup" class="link" >Signup</a><% } %>
+    <% if(activity === "notloggedin") { %> 
+    <% if(page === "home" || page === "about") { %>  <a href="/user/signup" class="link" >Signup</a><% } %>
     <% if(page === "login") { %>  <a href="signup" class="link" >Signup</a><% } %>
-    <% if(page === "home" || page === "about") { %> <a href="user/login" class="link">Login</a><% } %>
+    <% if(page === "home" || page === "about") { %> <a href="/user/login" class="link">Login</a><% } %>
     <% if(page === "signup") { %>  <a href="login" class="link" >Login</a><% } %>
     <% if(page != "about") { %> <a href="/about" class="link">About</a><% } %>
     <% if(page != "home") { %> <a href="/" class="link">Home</a><% } %>
     <% if(page === "home") { %> <div id="search">
       <input type="text" name="search" placeholder="search" onchange="search" />
     </div><% } } else { %>
-    <a href="/user/logout" class="link"><%= currentUser %> </a>
+    <a href="/user/logout" class="link"><%= username %> </a>
     <% if(page != "about") { %> <a href="/about" class="link">About</a><% } %>
     <% if(page != "home") { %> <a href="/" class="link">Home</a><% } %>
     <% if(page === "home") { %> <div id="search">

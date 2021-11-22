@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/card.css" />
-<div id="card" onmouseover="this.style.cursor = 'pointer'" onclick="document.location.href='post';return true;">
+<div id="card" onmouseover="this.style.cursor = 'pointer'" onclick="document.location.href='/post/<%= post._id %>';return true;">
   <div id="side">
     <div id="upvote">
       <a href="#">
@@ -29,15 +29,15 @@
         <div id="card-icon">
           <img src="/img/user.png" alt="user" />
         </div>
-        <div id="group">u/memes .</div>
-        <div id="uid">Posted by u/harshkyo</div>
+        <!-- <div id="group">u/memes .</div> -->
+        <div id="uid">Posted by u/<%= post.author.username %></div>
       </div>
       <!-- <div id="join">
         <a href="/">+ JOIN</a>
       </div> -->
     </div>
     <div id="content">
-        <p><% post.title %></p>
+        <p><%= post.title %></p>
         <img src="<% post.imageurl %> " alt="">
     </div>
     <div id="bottom">

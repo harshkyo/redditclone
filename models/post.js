@@ -11,7 +11,7 @@ const PostSchema = new Schema({
   },
   imageurl: {
     type: String,
-    required: true,
+    required: false,
   },
   comments: [Comment.schema],
   author: {

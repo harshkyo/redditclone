@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reddit</title>
+    <link href="/css/post.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <%- include("layouts/header", { page: "about", activity, username }) %>
+    <div id="post-content">
+      <div id="sub-post">
+        <div id="post-box">
+          <link rel="stylesheet" href="/css/card.css" />
+          <div id="card">
+            <div id="side">
+              <div id="upvote">
+                <a href="#">
+                  <img
+                    src="/img/neutral.png"
+                    alt="Upvote"
+                    onmouseout="this.src='/img/neutral.png'"
+                    onmouseover="this.src='/img/upvote.png'"
+                  />
+                </a>
+              </div>
+              <div id="votes">Vote</div>
+              <div id="downvote">
+                <a href="#">
+                  <img
+                    src="/img/neutral.png"
+                    alt="Downvote"
+                    onmouseout="this.src='/img/neutral.png'"
+                    onmouseover="this.src='/img/downvote.png'"
+                  />
+                </a>
+              </div>
+            </div>
+            <div id="center">
+              <div id="top">
+                <div id="left-top">
+                  <div id="card-icon">
+                    <img src="/img/user.png" alt="user" />
+                  </div>
+                  <!-- <div id="group">u/memes .</div> -->
+                  <div id="uid">Posted by u/<%= post.author.username %></div>
+                </div>
+                <!-- <div id="join">
+        <a href="/">+ JOIN</a>
+      </div> -->
+              </div>
+              <div id="content">
+                <p><%= post.title %></p>
+                <img src="<% post.imageurl %> " alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="post-box">
+          <link rel="stylesheet" href="/css/card.css" />
+          <div id="card">
+              <div id="make-comment">
+                  <form action="/comment/<%= post._id %>" method="post">
+                      <% if(username != undefined) { %> <label for="comment">Comment</label>
+                      <textarea name="content" placeholder="comment here:" required> </textarea> 
+                      <input type="submit" value="submit">
+                      <% } %>
+                  </form>
+                  <% (post.comments).forEach(comment => { %>
+                      <p><%= comment.content %> </p>
+                  <% }) %>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer-container">
+        <% if(username) {%> <%- include("layouts/createpost") %> <% } %> 
+        <%- include("layouts/footer") %>
+      </div>
+    </div>
+  </body>
+</html>
