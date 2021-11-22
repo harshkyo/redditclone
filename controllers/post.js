@@ -71,7 +71,7 @@ router.get("/:id", (req, res) => {
   Post.findById(req.params.id)
     .populate("author")
     .then((post) => {
-      console.log(post.comments);
+      // console.log(post.comments);
       res.render("post", {
         post,
         username,

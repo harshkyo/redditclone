@@ -29,6 +29,7 @@ router.post("/:postId", (req, res) => {
   const currentUser = req.session.user;
   const comment = new Comment(req.body);
   if (currentUser) {
+    comment.name = currentUser;
     comment.author = req.session.userid;
 
     Post.findById(req.params.postId)

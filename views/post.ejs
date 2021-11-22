@@ -61,14 +61,22 @@
           <link rel="stylesheet" href="/css/card.css" />
           <div id="card">
               <div id="make-comment">
-                  <form action="/comment/<%= post._id %>" method="post">
-                      <% if(username != undefined) { %> <label for="comment">Comment</label>
-                      <textarea name="content" placeholder="comment here:" required> </textarea> 
-                      <input type="submit" value="submit">
+                  <form action="/comment/<%= post._id %>" method="post" id="comment-form">
+                      <% if(username != undefined) { %> <div><label for="comment">Comment</label>
+                      <div>
+                        <textarea name="content" placeholder="comment here:" required></textarea>
+                        <input type="submit" value="submit">
+                      </div> 
+                      </div>
+                      
                       <% } %>
                   </form>
                   <% (post.comments).forEach(comment => { %>
-                      <p><%= comment.content %> </p>
+                      <div class="comment-box">
+                        <h4><%= comment.name %> commented: </h4>
+                        <p><%= comment.content %> </p>
+                        <hr>
+                      </div>
                   <% }) %>
               </div>
           </div>

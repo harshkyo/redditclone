@@ -4,6 +4,7 @@ body {
   box-shadow: none;
   font-family: Arial, Helvetica, sans-serif;
   background-color: black;
+  color: white;
 }
 
 #post-content {
@@ -27,19 +28,76 @@ body {
     flex: 50%;
 }
 
-#make-comment form{
+
+#make-comment{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 5px;
+  width: 100%;
+}
+
+#comment-form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
+  padding: 5px;
+  
 }
 
-#make-comment form textarea {
-  flex: 80%;
+#comment-form div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 90%;
 }
 
-#make-comment form textarea {
-  flex: 20%;
+#comment-form div div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#comment-form div div textarea {
+  color: white;
+  flex: 90%;
+  background-color: grey;
+  border: 2px;
+  border-color: white;
+  border-radius: 10px 0px 0px 10px;
+  resize: none;
+  cursor: pointer;
+}
+
+#comment-form div div input {
+  flex: 10%;
+  background-color: rgb(161, 159, 159);
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.comment-box h4 {
+  margin: 5px;
+  font-weight: 300;
+  color: rgb(160, 160, 160);
+}
+
+.comment-box p {
+  margin: 5px;
+}
+
+.comment-box hr {
+  width: 100%;
 }
 
 #footer-container {
